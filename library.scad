@@ -2,8 +2,8 @@
 
 //Module list
 //orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cylinderHeight);
-//annulus(outerRadius, innerRadius, cylinderHeight);
-
+//anulus(outerRadius, innerRadius, cylinderHeight);
+//anulus_cube(outerX,outerY,innerX, innerY,HeightZ);
 
 
 
@@ -28,11 +28,12 @@ module anulus(outerRadius, innerRadius, cylinderHeight){
         
         }
     }
+//------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
+module anulus_cube(outerX,outerY,innerX, innerY,HeightZ){
+    difference(){
+        cube([outerX,outerY, HeightZ],true);
+        cube([innerX,innerY, HeightZ],true);
+        }
+    }
+//------------------------------------------------------------------------------------------------------------------------
