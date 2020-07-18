@@ -49,6 +49,7 @@ module cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, ro
 translate([TranslateX, TranslateY, TranslateZ])
     rotate([rotateX, rotateY, rotateZ])
         cylinder(cylHeight, r = cylRadius);
+    assert(TranslateY!=undef, "X translation is required"); 
 }
 //------------------------------------------------------------------------------------------------------------------------
 module rounded_cube(){

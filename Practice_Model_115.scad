@@ -10,7 +10,7 @@ use <library.scad>
 render(){
 starting_Block();
 }
- 
+
 
 
     
@@ -49,11 +49,11 @@ module starting_Block(){
             cylinder_cut(baseDepth, cylCenterCutRadius, 0, baseWidth / 2, baseHeight, 0, 90, 0);// Top Cylinder cut
             
             translate([ mountingTransDepthBack, baseWidth /2 , 0])
-                rotate(90)
+                rotate([0,0,90])
                     orbital_cylinders(mountingTransWidth / 2 , 2, mountingHolesDiameter, baseThickness);
             
             translate([ mountingTransDepthFront, baseWidth /2 , 0])
-                rotate(90)
+                rotate([0,0,90])
                     orbital_cylinders(mountingTransWidth / 2 , 2, mountingHolesDiameter, baseThickness);
             
             cube_cut(sideCutDepth, cubeCutWidth, sideCutHeight, backThickness, 0, baseThickness);// Left cube Cut
@@ -79,7 +79,7 @@ module starting_Block(){
             }
         }
 module rounded_corner(){// add to library as a new module
-                rotate(-90)
+                rotate([0,0,-90])
                 difference(){
                 translate([ -cylCenterCutRadius, -cylCenterCutRadius, 0])
                     cube_cut(cylCenterCutRadius * 2, cylCenterCutRadius * 2, baseThickness, 0, 0, 0); 
@@ -90,7 +90,7 @@ module rounded_corner(){// add to library as a new module
                 translate([ -cylCenterCutRadius * 2, 0, 0])
                     cube_cut(cylCenterCutRadius * 2, cylCenterCutRadius * 2, baseThickness, 0, 0, 0);
                     
-                    cylinder_cut( baseThickness, cylCenterCutRadius, true);
+                    cylinder( baseThickness,r = cylCenterCutRadius, true);
                 }  
                     } 
     }
