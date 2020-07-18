@@ -6,7 +6,7 @@
 //anulus_cube(outerX, outerY, innerX, innerY, HeightZ);
 //cube_cut(DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ);
 //cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ);
-//rounded_cube();
+//rounded_corner(circleRadius,Thickness);
 
 
 
@@ -52,10 +52,20 @@ translate([TranslateX, TranslateY, TranslateZ])
     assert(TranslateY!=undef, "X translation is required"); 
 }
 //------------------------------------------------------------------------------------------------------------------------
-module rounded_cube(){
-    
+module rounded_corner(circleRadius,Thickness){// Rounds a corner on a cube.
+    difference(){
+        translate([ -circleRadius, -circleRadius, 0])
+            cube([circleRadius * 2, circleRadius * 2, Thickness]); 
+
+        translate([ -circleRadius, -circleRadius * 2, 0])
+            cube([circleRadius * 2, circleRadius * 2, Thickness]);
+
+        translate([ -circleRadius * 2, 0, 0])
+            cube([circleRadius * 2, circleRadius * 2, Thickness]);
+
+            cylinder(Thickness,r = circleRadius, true);
+    }  
     }
-    
     
     
     
