@@ -3,7 +3,11 @@
 //Module list
 //orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cylinderHeight);
 //anulus(outerRadius, innerRadius, cylinderHeight);
-//anulus_cube(outerX,outerY,innerX, innerY,HeightZ);
+//anulus_cube(outerX, outerY, innerX, innerY, HeightZ);
+//cube_cut(DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ);
+//cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ);
+//rounded_cube();
+
 
 
 
@@ -29,11 +33,38 @@ module anulus(outerRadius, innerRadius, cylinderHeight){
         }
     }
 //------------------------------------------------------------------------------------------------------------------------
-
-module anulus_cube(outerX,outerY,innerX, innerY,HeightZ){
+module anulus_cube(outerX, outerY, innerX, innerY, HeightZ){
     difference(){
-        cube([outerX,outerY, HeightZ],true);
-        cube([innerX,innerY, HeightZ],true);
+        cube([ outerX, outerY, HeightZ], true);
+        cube([ innerX, innerY, HeightZ],true);
         }
     }
 //------------------------------------------------------------------------------------------------------------------------
+module cube_cut( DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ ){
+    translate([ TranslateX, TranslateY, TranslateZ])
+        cube([ DepthX, WidthY, HeightZ]);
+    }
+//------------------------------------------------------------------------------------------------------------------------
+module cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ){
+translate([TranslateX, TranslateY, TranslateZ])
+    rotate([rotateX, rotateY, rotateZ])
+        cylinder(cylHeight, r = cylRadius);
+}
+//------------------------------------------------------------------------------------------------------------------------
+module rounded_cube(){
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
