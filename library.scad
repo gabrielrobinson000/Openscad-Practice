@@ -1,5 +1,9 @@
 //READ ME
 
+
+// bug finder
+//assert(TranslatX!=undef, "X translation is required");
+
 //Module list
 //orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cylinderHeight);
 //anulus(outerRadius, innerRadius, cylinderHeight);
