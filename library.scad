@@ -11,7 +11,7 @@
 //cube_cut(DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ);
 //cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ);
 //rounded_corner(circleRadius,Thickness);
-
+//triangle(Height, length, Depth);
 
 
 
@@ -70,8 +70,12 @@ module rounded_corner(circleRadius,Thickness){// Rounds a corner on a cube.
             cylinder(Thickness,r = circleRadius, true);
     }  
     }
-    
-    
+//------------------------------------------------------------------------------------------------------------------------
+module triangle(Length, Height, Depth){
+    linear_extrude(Depth){
+        polygon( points = [[0, 0],[Height, 0],[0, Length],[0, 0]]);
+    }
+        }
     
     
     
