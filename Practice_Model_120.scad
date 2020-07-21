@@ -32,11 +32,12 @@ module base_Plate(){
     triangleLenght = 60;
     triangleDepth = 10;
     
-    TriMergeOffset = triangleLenght * .03;
+    triMergeOffsetLenght = triangleLenght * .03;
+    triMergeOffsetHeight = triangleHeight * .03;
     
-    translate([cubeDepth - cutOffset - pipeOuterDiameter + TriMergeOffset, -triangleDepth / 2,baseThickness])
+    translate([cubeDepth - cutOffset - pipeOuterDiameter + triMergeOffsetLenght , -triangleDepth / 2,baseThickness - triMergeOffsetHeight])
     rotate([90, 0, 180])
-        triangle(triangleHeight, triangleLenght + TriMergeOffset, triangleDepth);
+        triangle(triMergeOffsetHeight + triangleHeight, triangleLenght + triMergeOffsetLenght , triangleDepth);
 
     anulus(anulusOuterRadius, anulusInnerDiameter, baseThickness);
 
