@@ -32,10 +32,20 @@ module orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cyl
         // To finish the orbiting cylinders will also be defined in RADIUS,
         // just acted like they're normal cylinders they don't like being called clones.
 //------------------------------------------------------------------------------------------------------------------------
-module anulus(outerRadius, innerRadius, cylinderHeight){
+module anulus(outerRadius, innerRadius, cylinderHeight, BetweenCenters){
     difference(){
-        cylinder(cylinderHeight, r = outerRadius);
+        hull(){
+            cylinder(cylinderHeight, r = outerRadius);
+        
+            translate([BetweenCenters, 0, 0])
+                cylinder(cylinderHeight, r = outerRadius);
+        }
+       hull(){    
         cylinder(cylinderHeight, r = innerRadius);
+        
+        translate([BetweenCenters, 0, 0])
+            cylinder(cylinderHeight, r = innerRadius);   
+       }
         
         }
     }
