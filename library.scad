@@ -10,6 +10,7 @@
 //Module list
 //orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cylinderHeight);
 //anulus(outerRadius, innerRadius, cylinderHeight);
+    //anulus_TanCut(outerRadius, innerRadius, cylinderHeight, tanCutWidth);
 //anulus_cube(outerX, outerY, innerX, innerY, HeightZ);
 //cube_cut(DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ);
 //cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ);
@@ -32,7 +33,7 @@ module orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cyl
         // To finish the orbiting cylinders will also be defined in RADIUS,
         // just acted like they're normal cylinders they don't like being called clones.
 //------------------------------------------------------------------------------------------------------------------------
-module anulus(outerRadius, innerRadius, cylinderHeight, BetweenCenters){
+module anulus(outerRadius, innerRadius, cylinderHeight, BetweenCenters = 0){
     difference(){
         hull(){
             cylinder(cylinderHeight, r = outerRadius);
@@ -49,6 +50,33 @@ module anulus(outerRadius, innerRadius, cylinderHeight, BetweenCenters){
         
         }
     }
+
+//-------------------------------------------------------------------
+module anulus_TanCut(outerRadius, innerRadius, cylinderHeight, tanCutWidth){
+   TanCutDepth = outerRadius - sqrt((outerRadius * outerRadius) - (tanCutWidth * tanCutWidth));
+   
+    difference(){
+        cylinder(cylinderHeight, r = outerRadius);
+        
+        cylinder(cylinderHeight, r = innerRadius);
+        
+        translate([outerRadius - TanCutDepth , -outerRadius, 0])
+            cube([outerRadius, outerRadius * 2, cylinderHeight]);   
+        
+        }
+    }
+//---------------------------------------------------------------
+module anulus_body(outerRadius, innerRadius, cylinderHeight, height){
+   TanCutDepth = 0 + outerRadius - sqrt((outerRadius * outerRadius) - (tanCutWidth * tanCutWidth));
+   anulus();
+    difference(){
+        translate([0 , -outerRadius, 0])
+            cube([height, outerRadius * 2, cylinderHeight]);
+
+        cylinder(cylinderHeight, r = outerRadius);
+        }
+    }
+    
 //------------------------------------------------------------------------------------------------------------------------
 module anulus_cube(outerX, outerY, innerX, innerY, HeightZ){
     difference(){
