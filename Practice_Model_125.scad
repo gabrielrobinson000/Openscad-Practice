@@ -31,7 +31,7 @@ module part_125(){
             rotate([90, 0, 0])
                 bent_cube(outerXlength, outerYlength, innerXlength, innerYlength, obritalDis, angleHere);
 
-            translate([0, outerXlength / 2 + (outerYlength - innerYlength), 0])
+            translate([0, outerXlength / 2 - (outerYlength - innerYlength), 0])
             rotate([90, 0, 0])
                 bent_cube(innerXlength, innerYlength, 0, 0, obritalDis + (outerYlength - innerYlength) / 2, angleHere);
             }
