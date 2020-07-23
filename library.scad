@@ -10,12 +10,16 @@
 //Module list
 //orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cylinderHeight);
 //anulus(outerRadius, innerRadius, cylinderHeight);
+    //anulus_hull(outerRadius, innerRadius, cylinderHeight, BetweenCenters)
     //anulus_TanCut(outerRadius, innerRadius, cylinderHeight, tanCutWidth);
+    //anulus_body(outerRadius, innerRadius, cylinderHeight, height);
 //anulus_cube(outerX, outerY, innerX, innerY, HeightZ);
 //cube_cut(DepthX, WidthY, HeightZ, TranslateX, TranslateY, TranslateZ);
 //cylinder_cut(cylHeight, cylRadius, TranslateX, TranslateY, TranslateZ, rotateX, rotateY, rotateZ);
 //rounded_corner(circleRadius,Thickness);
 //triangle(Height, length, Depth);
+//bent_pipe(outerRadius, innerRadius, obritalDis, angleHere);
+//bent_cube(outerXlength, outerYlength, innerXlength, innerYlength, obritalDis, angleHere);
 
 
 
@@ -33,7 +37,16 @@ module orbital_cylinders(ObitalDistance ,NumberOfCylinders , cylinderRadius, cyl
         // To finish the orbiting cylinders will also be defined in RADIUS,
         // just acted like they're normal cylinders they don't like being called clones.
 //------------------------------------------------------------------------------------------------------------------------
-module anulus(outerRadius, innerRadius, cylinderHeight, BetweenCenters = 0){
+module anulus(outerRadius, innerRadius, cylinderHeight){
+    difference(){
+        cylinder(cylinderHeight, r = outerRadius);
+        
+        cylinder(cylinderHeight, r = innerRadius);
+        }
+    }
+
+//------------------------------------------------------------------------------------------------------------------------
+module anulus_hull(outerRadius, innerRadius, cylinderHeight, BetweenCenters){
     difference(){
         hull(){
             cylinder(cylinderHeight, r = outerRadius);
@@ -117,10 +130,29 @@ module triangle(Length, Height, Depth){
         polygon( points = [[0, 0],[Height, 0],[0, Length],[0, 0]]);
     }
         }
-    
-    
-    
-    
+//------------------------------------------------------------------------------------------------------------------------
+module bent_pipe(outerRadius, innerRadius, obritalDis, angleHere){
+rotate_extrude(angle = angleHere,convexity = 10){
+translate([obritalDis, 0, 0])
+    difference(){
+        circle(outerRadius);
+        circle(innerRadius);
+        
+        }
+    }
+}
+//------------------------------------------------------------------------------------------------------------------------
+module bent_cube(outerXlength, outerYlength, innerXlength, innerYlength, obritalDis, angleHere){
+rotate_extrude(angle = angleHere,convexity = 10){
+translate([obritalDis + outerXlength / 2, outerYlength / 2, 0])
+    difference(){
+        square([outerXlength, outerYlength], center = true);
+        square([innerXlength, innerYlength], center = true);
+        
+        }
+    }
+}
+//------------------------------------------------------------------------------------------------------------------------    
     
     
     
