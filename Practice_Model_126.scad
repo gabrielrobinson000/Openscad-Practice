@@ -20,11 +20,13 @@ module Part_126(){
         
         anulusHeight = 96;
         CenterToCenter = 130;
+
+        CylHeight = 8;
     
     translate([0, 0, OffsetFromBase])
         plate();
     
-     translate([0, 0, OffsetFromBase + InterSpace])
+     translate([0, 0, OffsetFromBase + InterSpace + CylHeight])
         plate();
 
         anulus(BigCylInnerDiameter, BigAnulusInnerCutDiameter, anulusHeight);
@@ -33,7 +35,6 @@ module Part_126(){
         anulus(LittleCylInnerDiameter, LittleAnulusInnerCutDiameter, anulusHeight);
 
     module plate(){
-        CylHeight = 8;
         BigCylOuterRadius = 40;
         BigCylInnerDiameter = 60 * diameter;
         LittleCylOuterRadius = 20;
