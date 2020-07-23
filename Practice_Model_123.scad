@@ -18,12 +18,12 @@ height              = 180;
 
 
 translate([0,0, cylBottumHeight + cylHeight])
-    anulus( outerRadiusTop, innerRadius, cylHeight, 0);//Top
+    anulus( outerRadiusTop, innerRadius, cylHeight);//Top
 
 translate([0,0, cylBottumHeight])
-    anulus( outerRadiusmiddle, innerRadius, cylHeight, 0);//Middle
+    anulus( outerRadiusmiddle, innerRadius, cylHeight);//Middle
 
-anulus( outerRadiusbottum, innerRadius, cylBottumHeight, 0);//Bottum
+anulus( outerRadiusbottum, innerRadius, cylBottumHeight);//Bottum
 
 
 
@@ -34,16 +34,16 @@ anulus( outerRadiusbottum, innerRadius, cylBottumHeight, 0);//Bottum
 
 rotate([90, 0, 0])
 translate([-cubeHeight, OuterRadiusRotate, -OuterRadiusRotate])
-    anulus( OuterRadiusRotate, innerDiameterRotate, cylHeightRotate, 0);//Bottum
+    anulus( OuterRadiusRotate, innerDiameterRotate, cylHeightRotate);//Bottum
 
 difference(){    
     translate([-cubeHeight, OuterRadiusRotate, OuterRadiusRotate])
     rotate([90, 0, 0])
         anulus_body(OuterRadiusRotate, innerDiameterRotate, cylHeightRotate, cubeHeight);
     
-    anulus( outerRadiusbottum, 0, cylBottumHeight, 0);//Bottum
+    anulus( outerRadiusbottum, 0, cylBottumHeight);//Bottum
 }
-    anulus( outerRadiusbottum, cylBottumHeight, cylBottumHeight, 0);//Bottum
+    anulus( outerRadiusbottum, cylBottumHeight, cylBottumHeight);//Bottum
 
 
 PlateRadiusCut = 15;
@@ -52,6 +52,6 @@ betterCenterDis = 40;
 difference(){
     anulus_body( outerRadiusbottum, innerRadius, PlateHeight, height);//BasePlate
     translate([ height - betterCenterDis, 0, 0])
-        anulus(PlateRadiusCut, 0, PlateHeight, betterCenterDis);
+        anulus_hull(PlateRadiusCut, 0, PlateHeight, betterCenterDis);
     }
 
