@@ -40,7 +40,7 @@ module part_125(){
     module end_cubeX(){
         difference(){
             translate([obritalDis, -outerYlength / 2, 0])
-                cube([outerXlength, outerYlength,outerXlength - innerXlength]);
+                cube([outerXlength, outerYlength,(outerXlength - innerXlength) / 2]);
             
             translate([obritalDis + anulusInner * 2,0, 0])
                 cylinder(outerXlength - innerXlength, r = anulusInner);
@@ -51,7 +51,7 @@ module end_cubeZ(){
         difference(){
             translate([0, -outerYlength / 2, outerXlength + obritalDis])
             rotate([0, 90, 0])
-                cube([outerXlength, outerYlength,outerXlength - innerXlength]);
+                cube([outerXlength, outerYlength,(outerXlength - innerXlength) / 2]);
             
             translate([0, 0, outerXlength / 2 + obritalDis])
             rotate([0, 90, 0])
