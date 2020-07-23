@@ -80,8 +80,7 @@ module anulus_TanCut(outerRadius, innerRadius, cylinderHeight, tanCutWidth){
     }
 //---------------------------------------------------------------
 module anulus_body(outerRadius, innerRadius, cylinderHeight, height){
-   TanCutDepth = 0 + outerRadius - sqrt((outerRadius * outerRadius) - (tanCutWidth * tanCutWidth));
-   anulus();
+    anulus();
     difference(){
         translate([0 , -outerRadius, 0])
             cube([height, outerRadius * 2, cylinderHeight]);
