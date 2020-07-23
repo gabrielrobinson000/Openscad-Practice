@@ -58,6 +58,6 @@ module end_cubeZ(){
                 cylinder(outerXlength - innerXlength, r = anulusInner);
     }
     }    
-    translate([100,0,-anulusHeight])
+    translate([obritalDis + anulusInner * 2,0,-anulusHeight])
         anulus(anulusOuter, anulusInner, anulusHeight);
     }
