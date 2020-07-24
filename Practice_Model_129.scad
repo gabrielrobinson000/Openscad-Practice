@@ -4,6 +4,19 @@ degree = 1;
 diameter = .5;
 use <library.scad>
 
+/*
+translate([0,(160-35)/2,65])
+cube([5,35,5]);
+translate([0,0,-10])
+cube([5,OverAllLength,5]);
+
+rotate([0,-90])
+projection(cut = true)
+rotate([0,90])
+translate([-50,0,0]){
+     */
+
+
 OverAllLength = 160;
 PlateWidth = 50;
 PlateDepth = 125;
@@ -37,13 +50,13 @@ module VPlate(){
     TopCubeWidth = 35;
     centerDifference = OverAllLength - PlateWidth * 2 - TopCubeWidth;
     
-    translate([0, OverAllLength / 2 - centerDifference / 2, TopCubeZoffset - PlateHeight])
+    translate([0,PlateWidth + 12.5 , TopCubeZoffset - PlateHeight])
         cube([PlateDepth, TopCubeWidth, PlateHeight]);
     
     difference(){
         union(){
             hull(){//Left incline
-                translate([0, PlateWidth + PlateHeight, TopCubeZoffset - PlateHeight])
+                translate([0, PlateWidth + 12.5 , TopCubeZoffset - PlateHeight])
                     cube([PlateDepth, PlateHeight, PlateHeight]);
 
                 translate([0, PlateWidth, 0])
@@ -51,10 +64,9 @@ module VPlate(){
             }
             
             hull(){//Right incline
-                translate([0, OverAllLength - PlateWidth - PlateHeight, TopCubeZoffset - PlateHeight])
+                translate([0, OverAllLength - PlateWidth - PlateHeight - 12.5 , TopCubeZoffset - PlateHeight])
                     cube([PlateDepth, PlateHeight, PlateHeight]);
-
-                translate([0, OverAllLength - PlateWidth, 0])
+                translate([0, OverAllLength - PlateWidth - PlateHeight , 0])
                     cube([PlateDepth, PlateHeight, PlateHeight]);
             }
     }
