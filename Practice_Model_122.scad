@@ -29,7 +29,7 @@ module Part_122(){
         
         rotate([0, -90,180])
         difference(){
-            anulus(outerRadiusPipe, innerRadius, cylHeightPipe, 0);
+            anulus_hull(outerRadiusPipe, innerRadius, cylHeightPipe, 0);
             
             translate([ 0, -cubeDepth / 2, 0])
                 cube([outerRadiusPipe, cubeDepth, cylHeightPipe]);
@@ -48,7 +48,7 @@ module Part_122(){
         difference(){
             rotate([0, 0, 90])
             translate([-CenterDif / 2, -outerRadius, -outerRadiusPipe])
-                anulus(outerRadius, 0, cylHeight, CenterDif);
+                anulus_hull(outerRadius, 0, cylHeight, CenterDif);
             
             translate([outerRadius, CenterDif / 2,- outerRadiusPipe ])
                 cylinder(cylHeight, r = innerRadius);
@@ -60,7 +60,7 @@ module Part_122(){
         difference(){
             rotate([0, 0, 90])
             translate([-CenterDif / 2,- cylHeightPipe + outerRadius, -outerRadiusPipe])
-                anulus(outerRadius, 0, cylHeight, CenterDif);
+                anulus_hull(outerRadius, 0, cylHeight, CenterDif);
 
             translate([cylHeightPipe - outerRadius, CenterDif / 2,- outerRadiusPipe ])
                 cylinder(cylHeight, r = innerRadius);
@@ -86,7 +86,7 @@ module Part_122(){
             module pinch_Left(){
         translate([pinchShiftX, pinchShiftY, TanCutHeight + outerPinchRadius])
         rotate([-90, 0, 0])
-            anulus(outerPinchRadius,innerPinchDiameter, pinchDepth, 0 );// back
+            anulus_hull(outerPinchRadius,innerPinchDiameter, pinchDepth, 0 );// back
 
                 difference(){
                     translate([pinchShiftX - outerPinchRadius, pinchShiftY, TanCutHeight])
@@ -94,12 +94,12 @@ module Part_122(){
 
                     translate([pinchShiftX, pinchShiftY, TanCutHeight + outerPinchRadius])
                         rotate([-90, 0, 0])
-                            anulus(outerPinchRadius,0, pinchDepth, 0 );// back
+                            anulus_hull(outerPinchRadius,0, pinchDepth, 0 );// back
                     }
 
         translate([cylHeightPipe - pinchShiftX, pinchShiftY, TanCutHeight + outerPinchRadius])
         rotate([-90, 0, 0])
-            anulus(outerPinchRadius,innerPinchDiameter, pinchDepth, 0 );//front
+            anulus_hull(outerPinchRadius,innerPinchDiameter, pinchDepth, 0 );//front
                 
                 difference(){
                    translate([cylHeightPipe - pinchShiftX - outerPinchRadius, pinchShiftY, TanCutHeight])
@@ -107,7 +107,7 @@ module Part_122(){
 
                     translate([cylHeightPipe - pinchShiftX, pinchShiftY, TanCutHeight + outerPinchRadius])
                         rotate([-90, 0, 0])
-                            anulus(outerPinchRadius, 0, pinchDepth, 0 );//front
+                            anulus_hull(outerPinchRadius, 0, pinchDepth, 0 );//front
                             }
                 }
 
